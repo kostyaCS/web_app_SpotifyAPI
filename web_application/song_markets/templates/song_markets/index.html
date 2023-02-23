@@ -1,12 +1,16 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main page</title>
-</head>
-<body>
-    Hi there! It's webpage that will help you to find the dots on maps.
-</body>
+<html>
+  <head>
+    <title>Find Song by Country</title>
+    <link rel="stylesheet" href='{% static "css/style.css" %}'>
+  </head>
+  <body>
+    <h1>Find Song by Country</h1>
+    <form action="/search" method="get">
+      <label for="song-name">Song Name:</label>
+      <input type="text" id="song-name" name="song-name" placeholder="Enter song name...">
+      <input type="submit" value="Search">
+    </form>
+  </body>
 </html>
