@@ -8,7 +8,12 @@
 </head>
 <body>
 	<div class="searching">
-		<p>Searching info for {{ artist }}...</p>
+		<p>Searching info for "{{ song_name }}""...</p>
 	</div>
+	<script>
+        setTimeout(function() {
+            window.location.href = "{% url 'map_page' %}";
+        }, 5000);
+    </script>
 </body>
 </html>

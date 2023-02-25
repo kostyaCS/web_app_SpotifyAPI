@@ -6,11 +6,19 @@
     <link rel="stylesheet" href='{% static "css/style.css" %}'>
   </head>
   <body>
-    <h1>Find availiable markets for most popular artist's song</h1>
-    <form action='.' method="POST">{% csrf_token %}
-      <label for="song-name">Artist or band name:</label>
-      <input type="text" id="artist-name" name="artist-name" placeholder="Enter artists or band name...">
-      <input type="submit" value="Save"/>
-    </form>
+    <header>
+      <h1>Artist's Most Popular Song Availiable Markets Finder</h1>
+    </header>
+    <main>
+      <form action='.' method="POST">{% csrf_token %}
+        <label for="artist-name">Enter artist name:</label>
+        <input type="text" id="artist-name" name="artist-name" required>
+        <button type="submit">Search</button>
+      </form>
+    </main>
   </body>
 </html>
+
+
+
+
