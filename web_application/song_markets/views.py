@@ -6,8 +6,8 @@ from . import createmap
 
 load_dotenv()
 
-client_id = os.getenv("CLIENT_ID")
-client_secret = os.getenv("CLIENT_SECRET")
+client_id = "0922e09ab9f7417fa66b0eacd7b1abec"
+client_secret = "f85877e6e0d64398a0694a274ca5a134"
 
 
 def main(request):
