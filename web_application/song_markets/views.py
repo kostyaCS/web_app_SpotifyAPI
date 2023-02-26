@@ -24,7 +24,7 @@ def main(request):
             createmap.create_map(list_countries)
         except TypeError:
             return render(request, 'song_markets/error.html', {})
-        return render(request, 'song_markets/search.html', {"song_name": song_name})
+        return render(request, 'song_markets/search.html', {"song_name": song_name, "token": token})
     return render(request, 'song_markets/main.html', {})
 
 

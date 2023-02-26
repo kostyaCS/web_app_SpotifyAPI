@@ -7,7 +7,6 @@ import os
 from pathlib import Path
 import folium
 
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 STATIC_ROOT = os.path.join(BASE_DIR, 'song_markets')
 
@@ -21,12 +20,20 @@ def create_map(list_with_countries: List[str]):
     :return: None
 
     """
-    style1 = {'color': '#FFFFFF', "weight": 1}
     mapobj = folium.Map(location=[30, 10], zoom_start=3)
+    feature_group = folium.FeatureGroup(name="Availiable markets")
     folium.GeoJson(f'{STATIC_ROOT}/world.geojson', style_function=lambda x: {
         "fillColor": "#62F010"
         if x["properties"]["NAME"] in list_with_countries
-        else "#ff0000"
-    }).add_to(mapobj)
-    folium.GeoJson(f'{STATIC_ROOT}/world.geojson', style_function=lambda x: style1).add_to(mapobj)
+        else "#FFFFFF", 'weight': 0.5
+    }).add_to(feature_group)
+    feature_group2 = folium.FeatureGroup(name='Unavailiable markets')
+    folium.GeoJson(f'{STATIC_ROOT}/world.geojson', style_function=lambda x: {
+        "fillColor": "#FF0000"
+        if x["properties"]["NAME"] not in list_with_countries
+else "#FFFFFF", 'weight': 0.5
+    }).add_to(feature_group2)
+    feature_group.add_to(mapobj)
+    feature_group2.add_to(mapobj)
+    folium.LayerControl().add_to(mapobj)
     mapobj.save(f"{STATIC_ROOT}/templates/song_markets/map.html")
